@@ -1,0 +1,35 @@
+body {
+    background-color: rgb(233, 230, 230);
+}
+
+.header {
+    text-align: center;
+    color: rgb(226, 192, 4);
+}
+
+.container {
+    margin-top: 20px;
+    background-color: black;
+    border: black solid 2px;
+}
+
+.col {
+    color: rgb(226, 192, 4);
+    background-color: rgb(5, 5, 185);
+    border: black solid 2px;
+    text-align: center;
+    padding: 12px;
+}
+
+.col:hover {
+    background-color: gray;
+}
+
+.question {
+    margin-top: 10px;
+    text-align: center;
+}
+
+.input-group {
+    justify-content: center;
+}
