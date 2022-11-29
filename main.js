@@ -2,6 +2,7 @@ let body = document.querySelector('body');
 let questionObj = {};
 let questBool = false;
 let scoreNum = 0;
+let reAnswer = false;
 
 let readJeopardyData = async () => {
     let rawData = await fetch('jeopardy.json');
@@ -49,6 +50,7 @@ let readJeopardyData = async () => {
         }
         for(let i = 0; i < columns.length; i++){
             columns[i].addEventListener('click', (event) => {
+                reAnswer = false;
                 if(!questBool){
                     columns[i].style.background = 'gray';
                     if(event.target.classList[1] === 'cantClick'){
@@ -94,15 +96,18 @@ let readJeopardyData = async () => {
         inputButton.innerText = 'Submit';
         inputDiv.appendChild(inputButton);
         inputButton.addEventListener('click', () => {
-            if(input.value.toLowerCase() === questionObj.answer.toLowerCase()){
-                question.innerText = 'Correct!';
-                scoreNum += Number(questionObj.value.substring(1));
-                score.innerText = '$' + scoreNum;
-            }else{
-                question.innerText = 'Incorrect! The correct answer was ' + questionObj.answer;
+            if(!reAnswer){
+                if(input.value.toLowerCase() === questionObj.answer.toLowerCase()){
+                    question.innerText = 'Correct!';
+                    scoreNum += Number(questionObj.value.substring(1));
+                    score.innerText = '$' + scoreNum;
+                }else{
+                    question.innerText = 'Incorrect! The correct answer was ' + questionObj.answer;
+                }
             }
             questBool = false;
             input.value = '';
+            reAnswer = true;
         })
     }
     createInput();
