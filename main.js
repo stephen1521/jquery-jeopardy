@@ -1,3 +1,4 @@
+//
 let body = document.querySelector('body');
 let questionObj = {};
 let questBool = false;
